@@ -33,6 +33,14 @@ mongoose.connect(MONGODB_URI)
         process.exit(1); // Exit if connection fails
     });
 
+// Import the routes
+const accessibilityRoutes = require('./routes/accessibilityRoutes');
+
+// *******************************************************************
+// *** IMPORTANT FIX: Add this line to tell Express to use your routes ***
+// *******************************************************************
+app.use('/accessibility', accessibilityRoutes); // This must be here!
+
 // 7. Basic Route for Testing (API Endpoint)
 // When a GET request comes to the root URL '/', respond with a message.
 app.get('/', (req, res) => {
